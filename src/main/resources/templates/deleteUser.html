@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete User</title>
+</head>
+<body>
+
+<form th:action="@{'/restUser/users/' + ${user.userId}}" th:object="${user}" th:method="DELETE">
+    <fieldset style="...">
+        <legend style="..."><h2>Delete user</h2></legend>
+        <input type="text" name="id" th:field="*{userId}">
+    </fieldset>
+
+</form>
+
+</body>
+</html>

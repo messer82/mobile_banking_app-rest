@@ -28,6 +28,13 @@ dependencies {
 	// https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api
 	compile group: 'jakarta.validation', name: 'jakarta.validation-api', version: '2.0.2'
 
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore
+	compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.13'
+
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.12'
+
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

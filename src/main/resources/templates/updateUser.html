@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+<body>
+
+<form th:action="@{'/restUser/users/' + ${userId}}" th:object="${user}" th:method="POST">
+    <fieldset style="...">
+        <legend style="..."><h2>Update user</h2></legend>
+        Name:<br>
+        <input type="text" name="userName"><br>
+        Email:<br>
+        <input type="text" name="email"><br>
+        <input type="submit" value="Update user" style="...">
+    </fieldset>
+</form>
+
+</body>
+</html>

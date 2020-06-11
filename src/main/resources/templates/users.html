@@ -12,6 +12,16 @@
         <th>userName</th>
         <th>email</th>
         <th>birthDate</th>
+        <th>delete</th>
+        <th>update</th>
+    </tr>
+    <tr th:each="user:${users}">
+        <td th:text="${user.userId}" align="justify"></td>
+        <td th:text="${user.userName}" align="justify"></td>
+        <td th:text="${user.email}" align="justify"></td>
+        <td th:text="${user.birthDate}" align="justify"></td>
+        <td><a th:href="@{'/restUser/users/showDeleteUserPage/' + ${user.userId}}">Delete user</a> </td>
+        <td><a th:href="@{'/restUser/users/showUpdateUserPage/' + ${user.userId}}">Update user</a> </td>
     </tr>
 </table>
 
