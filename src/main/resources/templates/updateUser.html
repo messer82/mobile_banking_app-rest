@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:action="@{'/restUser/users/' + ${userId}}" th:object="${user}" th:method="POST">
+<form th:action="@{'/restUser/users/' + ${user.userId}}" th:object="${user}" th:method="POST">
     <fieldset style="...">
         <legend style="..."><h2>Update user</h2></legend>
         Name:<br>

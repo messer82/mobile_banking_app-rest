@@ -33,30 +33,28 @@ public class RestUserController {
         return restTemplate.postForEntity(url, user, User.class).getBody();
     }
 
-    @GetMapping("/showDeleteUserPage/{userId}")
+    @GetMapping("/showDeleteUser/{userId}")
     public String showUserDelete(@PathVariable("userId") int userId, Model model) {
-        model.addAttribute("user", restTemplate.getForObject(url + "/" + userId, User.class));
+        model.addAttribute("user", restTemplate.getForObject(url + "/user_id/" + userId, User.class));
         return "deleteUser";
     }
 
     @DeleteMapping("/{userId}")
-    public String deleteUser(@PathVariable(name = "userId") int userId) {
+    public String deleteUser(@ModelAttribute(name = "user") @PathVariable int userId) {
         restTemplate.delete(url + "/" + userId);
-
         return "redirect:/restUser/users";
     }
 
     @GetMapping("/showUpdateUserPage/{userId}")
     public String showUserUpdate(@PathVariable("userId") int userId, Model model) {
-        model.addAttribute("user", restTemplate.getForObject(url + "/" + userId, User[].class));
+        model.addAttribute("user", restTemplate.getForObject(url + "/user_id/" + userId, User.class));
         return "updateUser";
     }
 
     @PostMapping("/{userId}")
-    public String updateUser(@ModelAttribute(name = "user") @Valid User user, @PathVariable int userId, Model model) {
+    public String updateUser(@ModelAttribute(name = "user") @Valid User user, @PathVariable int userId) {
         restTemplate.patchForObject(url + "/" + userId, user, User.class);
 
-//        return getUsers(model);
         return "redirect:/restUser/users";
     }
 }

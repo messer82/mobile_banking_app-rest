@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,15 @@
 <form th:action="@{'/restUser/users/' + ${user.userId}}" th:object="${user}" th:method="DELETE">
     <fieldset style="...">
         <legend style="..."><h2>Delete user</h2></legend>
-        <input type="text" name="id" th:field="*{userId}">
+        Id:<br>
+        <input type="text" name="id" th:field="*{userId}"><br>
+        Name:<br>
+        <input type="text" name="name" th:field="*{userName}"><br>
+        Email:<br>
+        <input type="text" name="email" th:field="*{email}"><br>
+        BirthDate:<br>
+        <input type="text" name="birthDate" th:field="*{birthDate}"><br>
+        <input type="submit" value="Delete user">
     </fieldset>
 
 </form>

@@ -20,7 +20,7 @@
         <td th:text="${user.userName}" align="justify"></td>
         <td th:text="${user.email}" align="justify"></td>
         <td th:text="${user.birthDate}" align="justify"></td>
-        <td><a th:href="@{'/restUser/users/showDeleteUserPage/' + ${user.userId}}">Delete user</a> </td>
+        <td><a th:href="@{'/restUser/users/showDeleteUser/' + ${user.userId}}">Delete user</a> </td>
         <td><a th:href="@{'/restUser/users/showUpdateUserPage/' + ${user.userId}}">Update user</a> </td>
     </tr>
 </table>
