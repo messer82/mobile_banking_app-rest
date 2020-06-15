@@ -40,7 +40,7 @@ public class RestUserController {
     }
 
     @DeleteMapping("/{userId}")
-    public String deleteUser(@PathVariable int userId) {
+    public String deleteUser(@PathVariable(name = "userId") int userId) {
         restTemplate.delete(url + "/" + userId);
         return "redirect:/restUser/users";
     }
