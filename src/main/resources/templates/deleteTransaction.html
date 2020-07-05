@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Transaction</title>
+</head>
+<body>
+
+<form th:action="@{'/restTransaction/transactions/delete/' + ${transaction.transactionId}}" th:object="${transaction}" th:method="POST">
+    <fieldset>
+        TransactionId:<br>
+        <input type="text" name="transactionId" th:field="*{transactionId}"><br>
+        AccountId:<br>
+        <input type="text" name="accountId" th:field="*{accountId}"><br>
+        DestinationAccount:<br>
+        <input type="text" name="destinationAccount" th:field="*{destinationAccount}"><br>
+        Amount:<br>
+        <input type="text" name="amount" th:field="*{amount}"><br>
+        TransactionDate:<br>
+        <input type="text" name="transactionDate" th:field="*{transactionDate}"><br>
+        <td>
+            <input type="hidden" name="deleteTransaction" value="DeleteTransaction">
+            <button type="submit" th:value="deleteTransaction" onclick="return confirm('Are you sure?')">Delete</button>
+        </td>
+    </fieldset>
+</form>
+
+</body>
+</html>

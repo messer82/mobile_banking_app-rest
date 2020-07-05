@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Account</title>
+</head>
+<body>
+
+<form th:action="@{'/restAccount/accounts/delete/' + ${account.accountId}}" th:object="${account}" th:method="POST">
+    <fieldset>
+        AccountId:<br>
+        <input type="text" name="accountId" th:field="*{accountId}"><br>
+        UserId:<br>
+        <input type="text" name="userId" th:field="*{userId}"><br>
+        AccountNo:<br>
+        <input type="text" name="accountNo" th:field="*{accountNumber}"><br>
+        AccountBalance:<br>
+        <input type="text" name="accountBalance" th:field="*{balance}"><br>
+        <td>
+            <input type="hidden" name="deleteAccount" value="DeleteAccount">
+            <button type="submit" th:value="deleteAccount" onclick="return confirm('Are you sure?')">Delete</button>
+        </td>
+    </fieldset>
+</form>
+
+</body>
+</html>

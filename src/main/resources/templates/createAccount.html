@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+</head>
+<body>
+
+<form th:action="@{'/restAccount/accounts/create'}" th:object="${account}" th:method="POST">
+    <fieldset>
+        <legend><h2>Create account</h2></legend>
+        <input type="hidden" name="accountId" th:field="*{accountId}">
+        UserId:<br>
+        <input type="text" name="userId" th:field="*{userId}"><br>
+        AccountNo:<br>
+        <input type="text" name="accountNo" th:field="*{accountNumber}"><br>
+        AccountBalance:<br>
+        <input type="text" name="accountBalance" th:field="*{balance}"><br>
+        <button type="submit" class="btn btn-default">Create</button>
+    </fieldset>
+</form>
+
+</body>
+</html>

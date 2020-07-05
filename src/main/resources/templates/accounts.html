@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts Page</title>
+</head>
+<body>
+
+<form th:action="@{'/restAccount/accounts/showCreateAccountPage'}">
+    <button type="submit">Create account</button>
+</form>
+
+<!--<p><a href="/restAccount/accounts/showCreateAccountPage">Create account</a> </p>-->
+
+<div th:if="${accountDeleteMessage}" class="alert alert-success" role="alert">
+    <p th:text="${accountDeleteMessage}">Success message</p>
+</div>
+
+<div th:if="${accountUpdateMessage}" class="alert alert-success" role="alert">
+    <p th:text="${accountUpdateMessage}">Success message</p>
+</div>
+
+<form th:action="@{'/'}">
+    <button type="submit">Home Page</button>
+</form>
+
+<form th:action="@{'/restUser/users/'}">
+    <button type="submit">All users</button>
+</form>
+
+<h1>Account details</h1>
+<table border="5">
+    <tr id="id">
+        <th>accountId</th>
+        <th>userId</th>
+        <th>accountNo</th>
+        <th>balance</th>
+        <th>delete</th>
+        <th>update</th>
+        <th>accountTransactions</th>
+        <th>transactions</th>
+    </tr>
+    <tr th:each="account:${accounts}">
+        <td th:text="${account.accountId}"></td>
+        <td th:text="${account.userId}"></td>
+        <td th:text="${account.accountNumber}"></td>
+        <td th:text="${account.balance}"></td>
+        <td><a th:href="@{'/restAccount/accounts/showDeleteAccount/' + ${account.accountId}}">Delete account</a> </td>
+        <td><a th:href="@{'/restAccount/accounts/showUpdateAccount/' + ${account.accountId}}">Update account</a> </td>
+        <td><a th:href="@{'/restTransaction/transactions/transactionsByAccount/' + ${account.accountId}}">Show account transactions</a> </td>
+        <td><a th:href="@{'/restTransaction/transactions/showCreateTransactionPage'}">Make transaction</a> </td>
+    </tr>
+</table>
+
+</body>
+</html>

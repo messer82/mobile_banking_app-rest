@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:action="@{'/restUser/users/' + ${user.userId}}" th:object="${user}" th:method="DELETE">
+<form th:action="@{'/restUser/users/delete/' + ${user.userId}}" th:object="${user}" th:method="POST">
     <fieldset style="...">
         <legend style="..."><h2>Delete user</h2></legend>
         Id:<br>
@@ -19,7 +19,7 @@
         <input type="text" name="birthDate" th:field="*{birthDate}"><br>
         <td>
             <input type="hidden" name="deleteUser" value="Delete user">
-            <button type="submit" id="deleteUser" onclick="return confirm('Are you sure?')">Delete</button>
+            <button type="submit" th:value="deleteUser" onclick="return confirm('Are you sure?')">Delete</button>
         </td>
     </fieldset>
 </form>

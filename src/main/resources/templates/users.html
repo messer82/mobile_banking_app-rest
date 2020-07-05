@@ -5,8 +5,28 @@
     <title>Users Page</title>
 </head>
 <body>
+<p><a href="/">Home page</a> </p>
+
+<p><a href="/restUser/users/showCreateUserPage">Create user page</a> </p>
+
+
+<div th:if="${userUpdateMessage}" class="alert alert-success" role="alert">
+    <p th:text="${userUpdateMessage}">success message</p>
+</div>
+
+<div th:if="${userDeleteMessage}" class="alert alert-success" role="alert">
+    <p th:text="${userDeleteMessage}">success message</p>
+</div>
+
+<div th:if="${userCreateMessage}" class="alert alert-success" role="alert">
+    <p th:text="${userCreateMessage}">success message</p>
+</div>
+<form th:action="@{'/restUser/users/search'}" th:object="${users}" th:method="GET">
+    <input type="text" name="search" id="search">
+    <button type="submit" th:value="getUsersByName" th:href="@{'/restUser/users/search'}">Search</button>
+</form>
 <h1>User records</h1>
-<table border="10" style="...">
+<table border="5" style="...">
     <tr id="id">
         <th>userId</th>
         <th>userName</th>
@@ -20,7 +40,7 @@
         <td th:text="${user.userName}" align="justify"></td>
         <td th:text="${user.email}" align="justify"></td>
         <td th:text="${user.birthDate}" align="justify"></td>
-        <td><a th:href="@{'/restUser/users/showDeleteUser/' + ${user.userId}}">Delete user</a> </td>
+        <td><a th:href="@{'/restUser/users/showDeleteUser/' + ${user.userId}}" >Delete user</a> </td>
         <td><a th:href="@{'/restUser/users/showUpdateUserPage/' + ${user.userId}}">Update user</a> </td>
     </tr>
 </table>

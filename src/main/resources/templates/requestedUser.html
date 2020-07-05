@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Searched users</title>
+</head>
+<body>
+<form th:action="@{'/'}">
+<button type="submit">Home Page</button>
+</form>
+
+<form th:action="@{'/restUser/users/'}">
+    <button type="submit">All users</button>
+</form>
+
+<form th:action="@{'/restUser/users/search/'}" th:object="${search}">
+
+<h1>Searching users</h1>
+<table border="5" style="...">
+    <tr id="id">
+        <th>userId</th>
+        <th>userName</th>
+        <th>email</th>
+        <th>birthDate</th>
+        <th>delete</th>
+        <th>update</th>
+        <th>create account</th>
+    </tr>
+    <tr th:each="user:${search}">
+        <td th:text="${user.userId}" align="justify"></td>
+        <td th:text="${user.userName}" align="justify"></td>
+        <td th:text="${user.email}" align="justify"></td>
+        <td th:text="${user.birthDate}" align="justify"></td>
+        <td><a th:href="@{'/restUser/users/showDeleteUser/' + ${user.userId}}" >Delete user</a> </td>
+        <td><a th:href="@{'/restUser/users/showUpdateUserPage/' + ${user.userId}}">Update user</a> </td>
+        <td><a th:href="@{'/restAccount/accounts/showCreateAccountPage'}">Create account</a> </td>
+    </tr>
+</table>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Account</title>
+</head>
+<body>
+
+<form th:action="@{'/restAccount/accounts/update/' + ${account.accountId}}" th:object="${account}" th:method="POST">
+    <fieldset>
+        <legend><h2>Update account</h2></legend>
+        Balance:<br>
+        <input type="text" name="balance"><br>
+        <button type="submit" th:value="updateAccount">Update</button>
+    </fieldset>
+</form>
+
+</body>
+</html>

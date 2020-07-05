@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Transactions Page</title>
+</head>
+<body>
+
+<form th:action="@{'/'}">
+    <button type="submit">Home page</button>
+</form>
+
+<form th:action="@{'/restUser/users/'}">
+    <button type="submit">Users page</button>
+</form>
+
+<form th:action="@{'/restAccount/accounts/'}">
+    <button type="submit">Accounts page</button>
+</form>
+
+<div th:if="${deleteTransactionMessage}" class="alert alert-success" role="alert">
+    <p th:text="${deleteTransactionMessage}">Success message</p>
+</div>
+
+<h1>Transaction details</h1>
+<table border="5">
+    <tr id="id">
+        <th>transactionId</th>
+        <th>accountId</th>
+        <th>destinationAccount</th>
+        <th>amount</th>
+        <th>transactionDate</th>
+        <th>delete</th>
+    </tr>
+    <tr th:each="transaction:${transactions}">
+        <td th:text="${transaction.transactionId}"></td>
+        <td th:text="${transaction.accountId}"></td>
+        <td th:text="${transaction.destinationAccount}"></td>
+        <td th:text="${transaction.amount}"></td>
+        <td th:text="${transaction.transactionDate}"></td>
+        <td><a th:href="@{'/restTransaction/transactions/showDeleteTransaction/' + ${transaction.transactionId}}">Delete transaction</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
